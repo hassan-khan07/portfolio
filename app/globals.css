@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* Dark mode follows the data-theme attribute on <html> (set before paint in layout.tsx). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root,
+[data-theme="light"] {
+  --page: #f5f5f3;
+  --surface: #ffffff;
+  --line: #e2e2de;
+  --line-strong: #cfcfca;
+  --ink: #15171c;
+  --ink-2: #2b2e35;
+  --muted: #5a5e66;
+  --faint: #6b6f77;
+  --chip: #ecece8;
+  --chip-card: #f0f0ec;
+  --photo: #e7e7e2;
+  --accent: #2445d4;
+  --on-accent: #ffffff;
+  --pill: #3f434a;
+  --dot: #1f8a4c;
+  --contact: #15171c;
+  --contact-line: #15171c;
+  --contact-ink: #f5f5f3;
+  --contact-muted: #c4c6cb;
+  --dock: rgb(255 255 255 / 0.92);
+  --dock-shadow: rgb(21 23 28 / 0.1);
+  --dock-active: #f0f0ec;
+  --dock-icon: #2b2e35;
+  --tip: #15171c;
+  --tip-ink: #ffffff;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --page: #111317;
+  --surface: #181b20;
+  --line: #2a2e36;
+  --line-strong: #3a3f49;
+  --ink: #ecedef;
+  --ink-2: #d3d6db;
+  --muted: #a4a9b2;
+  --faint: #959ba5;
+  --chip: #1f232a;
+  --chip-card: #22262e;
+  --photo: #3a3f49;
+  --accent: #8799e7;
+  --on-accent: #111317;
+  --pill: #c9ccd2;
+  --dot: #34c27a;
+  --contact: #1c2027;
+  --contact-line: #2a2e36;
+  --contact-ink: #ecedef;
+  --contact-muted: #a4a9b2;
+  --dock: rgb(24 27 32 / 0.92);
+  --dock-shadow: rgb(0 0 0 / 0.45);
+  --dock-active: #262a32;
+  --dock-icon: #d3d6db;
+  --tip: #ecedef;
+  --tip-ink: #111317;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-chip: var(--chip);
+  --color-chip-card: var(--chip-card);
+  --color-photo: var(--photo);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-pill: var(--pill);
+  --color-dot: var(--dot);
+  --color-contact: var(--contact);
+  --color-contact-line: var(--contact-line);
+  --color-contact-ink: var(--contact-ink);
+  --color-contact-muted: var(--contact-muted);
+  --color-dock: var(--dock);
+  --color-dock-active: var(--dock-active);
+  --color-dock-icon: var(--dock-icon);
+  --color-tip: var(--tip);
+  --color-tip-ink: var(--tip-ink);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 28%, transparent);
+}
+
+/* Leave room above a section when jumping to it with a link. */
+[id] {
+  scroll-margin-top: 2rem;
+}
+
+dialog::backdrop {
+  background: rgb(10 11 14 / 0.55);
+  backdrop-filter: blur(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
